@@ -1,0 +1,32 @@
+<nav class="navbar" [class.scrolled]="scrolled()">
+  <div class="container nav-inner">
+    <button class="logo" (click)="scrollTo('home')" aria-label="Inicio">
+      <span class="bracket">&lt;</span>Tomás Nieto<span class="bracket">/&gt;</span>
+    </button>
+
+    <ul class="nav-list" [class.open]="menuOpen()">
+      @for (item of navItems; track item.id) {
+        <li>
+          <button
+            class="nav-link"
+            [class.active]="activeSection() === item.id"
+            (click)="scrollTo(item.id)"
+          >
+            {{ item.label }}
+          </button>
+        </li>
+      }
+    </ul>
+
+    <button
+      class="hamburger"
+      [class.active]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

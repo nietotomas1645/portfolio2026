@@ -1,0 +1,33 @@
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Habilidades</div>
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-desc">Tecnologías con las que construyo soluciones completas, del frontend al cloud.</p>
+    </div>
+
+    <div class="skills-grid">
+      @for (skill of skills; track skill.name) {
+        <div
+          class="skill-card"
+          (mousemove)="onTilt($event)"
+          (mouseleave)="onTiltLeave($event)"
+        >
+          <div class="skill-icon">
+            @if (!skill.custom) {
+              <i [class]="skill.icon"></i>
+            } @else if (skill.customKey === 'claude') {
+              <span class="custom-icon ci-claude">AI</span>
+            } @else if (skill.customKey === 'chatgpt') {
+              <span class="custom-icon ci-chatgpt">GPT</span>
+            } @else if (skill.customKey === 'iis') {
+              <span class="custom-icon ci-iis">IIS</span>
+            }
+          </div>
+          <span class="skill-name">{{ skill.name }}</span>
+          <div class="card-glow"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

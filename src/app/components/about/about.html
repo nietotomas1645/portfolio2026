@@ -1,0 +1,53 @@
+<section id="about" class="about">
+  <div class="orb-about"></div>
+  <div class="container about-inner">
+    <div class="about-image-col reveal">
+      <div class="image-frame">
+        <div class="image-wrapper">
+          <img src="/assets/yo.jpg" alt="Foto de perfil" class="profile-img" />
+          <div class="image-bg"></div>
+        </div>
+        <div class="frame-dot frame-dot-tl"></div>
+        <div class="frame-dot frame-dot-br"></div>
+      </div>
+    </div>
+
+    <div class="about-content-col">
+      <div class="reveal">
+        <div class="section-label">Sobre mí</div>
+        <h2 class="section-title">Hola, soy Tomás</h2>
+      </div>
+
+      <p class="about-text reveal">
+        Soy Tomás, desarrollador con 4 años de experiencia construyendo software. Mi foco principal es el Frontend,
+        aunque me muevo con comodidad en proyectos Full Stack: he desarrollado APIs con .NET Core y SQL Server
+        usando enfoque code first, y construido servicios backend con .NET.
+      </p>
+
+      <p class="about-text reveal">
+        Del lado del cliente trabajo con Angular, TypeScript, HTML, CSS y SCSS, creando interfaces con Bootstrap y
+        Angular Material. También contribuí al desarrollo de componentes para una librería de diseño propia.
+        Disfruto los desafíos que me obligan a seguir creciendo.
+      </p>
+
+      <div class="stats-row reveal">
+        @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+        }
+      </div>
+
+      <div class="reveal">
+        <a href="/assets/cv-tomasnieto.pdf" download class="btn btn-primary">
+          Descargar CV
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

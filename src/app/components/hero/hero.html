@@ -1,0 +1,46 @@
+<section id="home" class="hero">
+  <canvas #canvas class="canvas"></canvas>
+  <div class="orb orb-purple"></div>
+  <div class="orb orb-cyan"></div>
+
+  <div class="container hero-body">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Disponible para nuevos proyectos
+    </div>
+
+    <h1 class="title">
+      Hola, soy<br>
+      <span class="name">Tomás Nieto</span>
+    </h1>
+
+    <p class="subtitle">
+      <span class="typing">{{ displayText() }}</span><span class="cursor">|</span>
+    </p>
+
+    <p class="desc">
+      Construyo experiencias digitales robustas y escalables. Especializado en Angular, .NET y arquitecturas cloud con Azure.
+    </p>
+
+    <div class="actions">
+      <button class="btn btn-primary" (click)="scrollToSection('projects')">
+        Ver proyectos
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <a href="/cv.pdf" download class="btn btn-ghost">
+        Descargar CV
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+      </a>
+    </div>
+
+    <button class="scroll-hint" (click)="scrollToSection('about')" aria-label="Ir a Sobre mí">
+      <div class="scroll-wheel">
+        <div class="scroll-ball"></div>
+      </div>
+    </button>
+  </div>
+</section>
