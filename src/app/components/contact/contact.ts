@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AboutComponent } from "../about/about";
 
@@ -12,6 +13,7 @@ import { AboutComponent } from "../about/about";
 })
 export class ContactComponent implements AfterViewInit {
   private fb = inject(FormBuilder);
+  private http = inject(HttpClient);
   private el = inject(ElementRef);
   private platformId = inject(PLATFORM_ID);
 
@@ -61,10 +63,28 @@ export class ContactComponent implements AfterViewInit {
 
     this.sending.set(true);
 
-    setTimeout(() => {
-      this.sending.set(false);
-      this.sent.set(true);
-      this.form.reset();
-    }, 1500);
+    const { name, email, message } = this.form.value;
+    const body = new URLSearchParams({
+      'form-name': 'contact',
+      name: name ?? '',
+      email: email ?? '',
+      message: message ?? '',
+    }).toString();
+
+    this.http
+      .post('/', body, {
+        headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+        responseType: 'text',
+      })
+      .subscribe({
+        next: () => {
+          this.sending.set(false);
+          this.sent.set(true);
+          this.form.reset();
+        },
+        error: () => {
+          this.sending.set(false);
+        },
+      });
   }
 }
