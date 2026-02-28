@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AboutComponent } from "../about/about";
 
@@ -55,6 +55,8 @@ export class ContactComponent implements AfterViewInit {
     this.el.nativeElement.querySelectorAll('.reveal').forEach((el: Element) => observer.observe(el));
   }
 
+  private readonly WEB3FORMS_KEY = 'TU_ACCESS_KEY_AQUI';
+
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -64,17 +66,13 @@ export class ContactComponent implements AfterViewInit {
     this.sending.set(true);
 
     const { name, email, message } = this.form.value;
-    const body = new URLSearchParams({
-      'form-name': 'contact',
-      name: name ?? '',
-      email: email ?? '',
-      message: message ?? '',
-    }).toString();
 
     this.http
-      .post('/', body, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
-        responseType: 'text',
+      .post('https://api.web3forms.com/submit', {
+        access_key: this.WEB3FORMS_KEY,
+        name: name ?? '',
+        email: email ?? '',
+        message: message ?? '',
       })
       .subscribe({
         next: () => {
